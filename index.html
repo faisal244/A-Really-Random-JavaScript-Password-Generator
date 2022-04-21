@@ -23,6 +23,19 @@
             placeholder="Your Secure Password"
             aria-label="Generated Password"
           ></textarea>
+
+          <form>      
+            <fieldset>      
+                <legend>Password Criteria</legend>      
+                <input type="checkbox" name="password-criteria" value="upper">Uppercase<br>      
+                <input type="checkbox" name="password-criteria" value="lower">Lowercase<br>      
+                <input type="checkbox" name="password-criteria" value="numbers">Numbers<br>  
+                <input type="checkbox" name="password-criteria" value="special">Special Characters<br>     
+                <br>      
+                <input type="submit" value="Submit now" />      
+            </fieldset>      
+        </form>
+          
         </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>

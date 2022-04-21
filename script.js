@@ -1,12 +1,25 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+let passwordLength = prompt("Please enter your password length");
+if (passwordLength =>8) {
+  document.getElementById("password").innerHTML =
+  "Hello ! How are you today?";
 
+} if (passwordLength > 128) {
+  document.getElementById("password").innerHTML =
+  "password is too long";
+  
+} if (passwordLength < 8) {
+  document.getElementById("password").innerHTML =
+  "password is too short";
+  
+}
 
 
 
 // password length function
-const getPasswordLength = () => {
+const getPasswordLength = (length) => {
   let passwordLength = prompt("Please enter your password length");
 if (passwordLength =>8) {
   document.getElementById("password").innerHTML =
@@ -26,12 +39,13 @@ const getPasswordCritera = () => {
 
   // maybe a variable with 3 functions nested inside of it here 
   // whack in the alphabet and number stuff in here 
-  // return [" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
 
-  // "uppercase line"  return ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']
-  // "lowercaseline" return ['abcdefghijklmnopqrstuvwxyz']
-  // "numbers" return ['0123456789']
-  
+
+  const uppercase = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+  const lowercase = ['abcdefghijklmnopqrstuvwxyz']
+  const numbers = ['0123456789']
+  // need to work out how to close an array of special characters
+  const special = [" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
 
 
 };

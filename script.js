@@ -1,15 +1,25 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var uppercaseCheckbox = document.querySelector("#upper");
+var lowercaseCheckbox = document.querySelector("#lower");
+var numberCheckbox = document.querySelector("#numbers");
+var specialCheckbox = document.querySelector("#special");
 
 
 
-let passwordLength = prompt("Please enter your password length");
+
+
+
+
+// password length function
+const getPasswordLength = (number) => {
+  
+  let passwordLength = prompt("Please enter your password length");
 if (passwordLength =>8) {
   document.getElementById("password").innerHTML =
-  passwordLength + "good password length";
+  passwordLength + " is a good password length";
   // return = passwordLength ;
   
-
 } if (passwordLength > 128) {
   document.getElementById("password").innerHTML =
   "password is too long";
@@ -19,11 +29,10 @@ if (passwordLength =>8) {
   "password is too short";
   
 }
+console.log("password length: " + passwordLength)
+return getPasswordLength
+}
 
-
-
-// password length function
-const getPasswordLength = () => {return getPasswordLength.length}
 
 
   // let passwordLength = prompt("Please enter your password length");
@@ -49,17 +58,45 @@ const getPasswordLength = () => {return getPasswordLength.length}
 const getPasswordCritera = () => {
 
   // maybe a variable with 3 functions nested inside of it here 
-  // whack in the alphabet and number stuff in here 
+// might need to turn each of the below into its own function - they currently fire all at once
+  if (uppercaseCheckbox !== null) {
+    console.log('uppercase!!!!')
+
+  }  if (lowercaseCheckbox !== null) {
+    console.log('lowercase!!!!')
+
+  } if (numberCheckbox !== null) {
+    console.log('Numbers !!!!')
+
+  } if (specialCheckbox !== null) {
+    console.log('Special characters!!!!')
+
+  } else {
+    console.log('Please select at least one option')
+  }
+
+
+  // whack in the alphabet and number arrays in here 
 
 
   const uppercase = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
   const lowercase = ['abcdefghijklmnopqrstuvwxyz']
   const numbers = ['0123456789']
-  // need to work out how to close an array of special characters
   const special = [" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
+
+  // if (uppercaseCheckbox === true) {
+    console.log('uppercase selected and working')
+
 
 
 };
+
+// Add event listeners for the checkboxes
+uppercaseCheckbox.addEventListener("click", getPasswordCritera);
+lowercaseCheckbox.addEventListener("click", getPasswordCritera);
+numberCheckbox.addEventListener("click", getPasswordCritera);
+specialCheckbox.addEventListener("click", getPasswordCritera);
+
 const createRandomPassword = () => {
 
   return "sadjkghasfjk"

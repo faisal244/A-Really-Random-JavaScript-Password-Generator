@@ -1,10 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+
 let passwordLength = prompt("Please enter your password length");
 if (passwordLength =>8) {
   document.getElementById("password").innerHTML =
-  "Hello ! How are you today?";
+  "good password length";
+ 
 
 } if (passwordLength > 128) {
   document.getElementById("password").innerHTML =
@@ -19,20 +22,27 @@ if (passwordLength =>8) {
 
 
 // password length function
-const getPasswordLength = (length) => {
-  let passwordLength = prompt("Please enter your password length");
-if (passwordLength =>8) {
-  document.getElementById("password").innerHTML =
-  "Hello ! How are you today?";
-} if (passwordLength > 128) {
-  console.log('password is too long')
-} if (passwordLength < 8) {
-  console.log('password is too short')
-}
+const getPasswordLength = () => {return getPasswordLength.length}
+
+
+  // let passwordLength = prompt("Please enter your password length");
+  // if (passwordLength =>8) {
+  //   document.getElementById("password").innerHTML =
+  //   "good password length";
+  
+  // } if (passwordLength > 128) {
+  //   document.getElementById("password").innerHTML =
+  //   "password is too long";
+    
+  // } if (passwordLength < 8) {
+  //   document.getElementById("password").innerHTML =
+  //   "password is too short";
+    
+  // }
+  
 
 
 
-};
 
 
 const getPasswordCritera = () => {
@@ -45,7 +55,7 @@ const getPasswordCritera = () => {
   const lowercase = ['abcdefghijklmnopqrstuvwxyz']
   const numbers = ['0123456789']
   // need to work out how to close an array of special characters
-  const special = [" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
+  const special = [" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
 
 
 };

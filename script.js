@@ -1,15 +1,38 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-const getPasswordLength = () => {};
-const getPasswordCritera = () => {
-  whack in the alphabet and number stuff in here 
-  return[ " !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 
-  "uppercase line"
-  "lowercase uppercase line"
-  "numbers"
-  ]
+
+
+
+// password length function
+const getPasswordLength = () => {
+  let passwordLength = prompt("Please enter your password length");
+if (passwordLength =>8) {
+  document.getElementById("password").innerHTML =
+  "Hello ! How are you today?";
+} if (passwordLength > 128) {
+  console.log('password is too long')
+} if (passwordLength < 8) {
+  console.log('password is too short')
+}
+
+
+
+};
+
+
+const getPasswordCritera = () => {
+
+  // maybe a variable with 3 functions nested inside of it here 
+  // whack in the alphabet and number stuff in here 
+  // return [" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
+
+  // "uppercase line"  return ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']
+  // "lowercaseline" return ['abcdefghijklmnopqrstuvwxyz']
+  // "numbers" return ['0123456789']
+  
+
 
 };
 const createRandomPassword = () => {

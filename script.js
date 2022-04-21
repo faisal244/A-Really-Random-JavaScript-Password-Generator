@@ -6,8 +6,9 @@ var generateBtn = document.querySelector("#generate");
 let passwordLength = prompt("Please enter your password length");
 if (passwordLength =>8) {
   document.getElementById("password").innerHTML =
-  "good password length";
- 
+  passwordLength + "good password length";
+  // return = passwordLength ;
+  
 
 } if (passwordLength > 128) {
   document.getElementById("password").innerHTML =

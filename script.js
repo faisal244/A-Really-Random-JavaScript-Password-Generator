@@ -2,19 +2,24 @@
 var generateBtn = document.querySelector("#generate");
 var uppercaseCheckbox = document.querySelector("#upper");
 var lowercaseCheckbox = document.querySelector("#lower");
-var numberCheckbox = document.querySelector("#numbers");
+var numberCheckbox = document.querySelector("#number");
 var specialCheckbox = document.querySelector("#special");
+// let passwordLength = document.getElementById("#length").value;
+// let passwordLength = ''
+
+
+ 
 
 
 
+// password length validation function
+// const getPasswordLength = (number) => {
 
-
-
-
-// password length function
-const getPasswordLength = (number) => {
+function getPasswordLength() {
   
-  let passwordLength = prompt("Please enter your password length");
+  // let passwordLength = prompt("Please enter your password length");
+  let passwordLength = document.getElementById("length").value;
+  // return passwordLength;
 if (passwordLength =>8) {
   document.getElementById("password").innerHTML =
   passwordLength + " is a good password length";
@@ -30,7 +35,7 @@ if (passwordLength =>8) {
   
 }
 console.log("password length: " + passwordLength)
-return getPasswordLength
+return passwordLength
 }
 
 
@@ -59,6 +64,8 @@ const getPasswordCritera = () => {
 
   // maybe a variable with 3 functions nested inside of it here 
 // might need to turn each of the below into its own function - they currently fire all at once
+  
+upperCase() 
   if (uppercaseCheckbox !== null) {
     console.log('uppercase!!!!')
 
@@ -103,18 +110,18 @@ const createRandomPassword = () => {
 };
 
 
-  const generatePassword = () => {
+  // const generatePassword = () => {
 
 
-    const passwordLengh = getPasswordLength();
+  //   const passwordLengh = getPasswordLength();
 
-    const passwordCriteria = getPasswordCriteria();
+  //   const passwordCriteria = getPasswordCriteria();
 
-    const password = createRandomPassword(passwordlength, passwordcriteria);
-      return password;
+  //   const password = createRandomPassword(passwordlength, passwordcriteria);
+  //     return password;
 
 
-  };
+  // };
   
 
 // Write password to the #password input
@@ -128,3 +135,9 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", getPasswordLength);
+
+
+
+// <!-- nice way of doing inline JS instead of using listeners -->
+  // <button onclick="changeColor()">CLICK ME </button>

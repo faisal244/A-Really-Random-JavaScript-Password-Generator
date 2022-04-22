@@ -1,29 +1,26 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-var uppercaseCheckbox = document.querySelector("#upper");
-var lowercaseCheckbox = document.querySelector("#lower");
-var numberCheckbox = document.querySelector("#number");
-var specialCheckbox = document.querySelector("#special");
+
+// Declaration of variables
+let generateBtn = document.querySelector("#generate");
+let uppercaseCheckbox = document.querySelector("#upper");
+let lowercaseCheckbox = document.querySelector("#lower");
+let numberCheckbox = document.querySelector("#number");
+let specialCheckbox = document.querySelector("#special");
 // let passwordLength = document.getElementById("#length").value;
 // let passwordLength = ''
 
 
- 
-
 
 
 // password length validation function
-// const getPasswordLength = (number) => {
+const getPasswordLength = () => {
 
-function getPasswordLength() {
-  
-  // let passwordLength = prompt("Please enter your password length");
-  let passwordLength = document.getElementById("length").value;
-  // return passwordLength;
+
+let passwordLength = document.getElementById("length").value;
+
 if (passwordLength =>8) {
   document.getElementById("password").innerHTML =
   passwordLength + " is a good password length";
-  // return = passwordLength ;
   
 } if (passwordLength > 128) {
   document.getElementById("password").innerHTML =
@@ -33,6 +30,9 @@ if (passwordLength =>8) {
   document.getElementById("password").innerHTML =
   "password is too short";
   
+} if (passwordLength == 0) {
+  document.getElementById("password").innerHTML =
+  "Password length cannot be empty - please select a length between 8-128";
 }
 console.log("password length: " + passwordLength)
 return passwordLength
@@ -61,27 +61,35 @@ return passwordLength
 
 
 const getPasswordCritera = () => {
-
+  let uppercaseCheckbox = document.querySelector("#upper");
+  let lowercaseCheckbox = document.querySelector("#lower");
+  let numberCheckbox = document.querySelector("#number");
+  let specialCheckbox = document.querySelector("#special");
   // maybe a variable with 3 functions nested inside of it here 
 // might need to turn each of the below into its own function - they currently fire all at once
   
-upperCase() 
-  if (uppercaseCheckbox !== null) {
-    console.log('uppercase!!!!')
-
-  }  if (lowercaseCheckbox !== null) {
-    console.log('lowercase!!!!')
-
-  } if (numberCheckbox !== null) {
-    console.log('Numbers !!!!')
-
-  } if (specialCheckbox !== null) {
-    console.log('Special characters!!!!')
-
-  } else {
-    console.log('Please select at least one option')
+function upperCase() {
+    // if (uppercaseCheckbox !== null) {
+      let uppercaseCheckbox = document.querySelector("#upper");
+      let lowercaseCheckbox = document.querySelector("#lower");
+      if (uppercaseCheckbox = document.querySelector('#upper input:checked'))
+      console.log ("uppercase!!!!")
+    } if (lowercaseCheckbox = document.querySelector('#lower input:checked'))
+    
+    
+    // else if (lowercaseCheckbox !== null) {
+      console.log('lowercase!!!!');
   }
+    // } else if (numberCheckbox !== null) {
+    //   console.log('Numbers !!!!')
 
+    // } else if (specialCheckbox !== null) {
+    //   console.log('Special characters!!!!')
+
+    // } else {
+    //   console.log('Please select at least one option')
+    // }
+  
 
   // whack in the alphabet and number arrays in here 
 
@@ -92,17 +100,21 @@ upperCase()
   const special = [" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
 
   // if (uppercaseCheckbox === true) {
-    console.log('uppercase selected and working')
+    // console.log('uppercase selected and working')
 
 
 
-};
+// };
 
 // Add event listeners for the checkboxes
 uppercaseCheckbox.addEventListener("click", getPasswordCritera);
 lowercaseCheckbox.addEventListener("click", getPasswordCritera);
 numberCheckbox.addEventListener("click", getPasswordCritera);
 specialCheckbox.addEventListener("click", getPasswordCritera);
+ 
+
+
+
 
 const createRandomPassword = () => {
 

@@ -6,8 +6,11 @@ let uppercaseCheckbox = document.querySelector("#upper");
 let lowercaseCheckbox = document.querySelector("#lower");
 let numberCheckbox = document.querySelector("#number");
 let specialCheckbox = document.querySelector("#special");
-// let passwordLength = '';
+let passwordLength = document.getElementById("length").value;
 // let passwordLength = document.getElementById("#length").value;
+
+// An Array which will store all of the users inputs for password criteria
+let attributes = []
 
 
 // let userLength = function() {
@@ -28,7 +31,7 @@ const getPasswordLength = (PasswordLength) => {
   // This variable takes the users input and makes it available within this function
   // let passwordLength = document.getElementById("length").value;
   const passwordLength = prompt("Please enter your password length");
-  console.log(passwordLength);
+  // console.log(passwordLength);
   
   // if password length is not a number:  
   if (isNaN(passwordLength)) {
@@ -56,6 +59,7 @@ const getPasswordLength = (PasswordLength) => {
   } if (passwordLength >= 8 && passwordLength <= 128){
     // logs password length to console
     console.log("true")
+    document.getElementById("length").value = passwordLength;
     return true;
     // console.log("password length: " + passwordLength)
   } else {
@@ -69,43 +73,63 @@ const getPasswordLength = (PasswordLength) => {
 
 
 
-document.addEventListener("click", getPasswordLength);
 
-// let passwordLength = prompt("Please enter your password length");
-  // if (passwordLength =>8) {
-  //   document.getElementById("password").innerHTML =
-  //   "good password length";
+
+
+
+
+
+  const getPasswordCritera = () => {
+
+  // Declarion of variables that store the users ansers from prompts about which type of characters they want included in their password
+  const lowerCasePrompt = confirm("Do you want your secure password to contain lowercase characters?");
+  const upperCasePrompt = confirm("Do you want your secure password to contain uppercase characters?");
+  const numberPrompt = confirm("Do you want your secure password to contain numbers?");
+  const specialPrompt = confirm("Do you want your secure password to contain special characters?");
   
-  // } if (passwordLength > 128) {
-  //   document.getElementById("password").innerHTML =
-  //   "password is too long";
-    
-  // } if (passwordLength < 8) {
-  //   document.getElementById("password").innerHTML =
-  //   "password is too short";
-    
-  // }
   
 
 
 
-
-
-const getPasswordCritera = () => {
-
-// may need to create a new field on the front end for error messages, doesn't seem to work if more than 1 function is targetting the same html field
-  var errorMessage = document.getElementById("password").innerHTML;
-  var checked = document.querySelectorAll('input:checked');
-  if (checked.length === 0) {
-    errorMessage = "You must select at least one character type";
-   console.log('no checkboxes checked');
-   return false;
-  } else {
-    errorMessage = "";
-  console.log(checked.length + 'checkboxes checked');
-   return true;
+    const attributes = {
+      // passwordLength: passwordLength, - not sure if i even need to include this here, might be better to call it seperately
+      lowercase: lowerCasePrompt,
+      uppercase: upperCasePrompt,
+      numChar: numberPrompt,
+      specialChar: specialPrompt,
+    };
+    console.log(attributes)
+    return attributes;
+    
+    
+    
   }
-}
+
+
+  document.addEventListener("click", getPasswordLength);
+  document.addEventListener("click", getPasswordCritera);
+
+
+
+
+
+//   // below is the logic for using checkboxes - i've abandoned this because the homework brief specially asked from prompts - may reinstate this in future 
+// // may need to create a new field on the front end for error messages, doesn't seem to work if more than 1 function is targetting the same html field
+//   var errorMessage = document.getElementById("password").innerHTML;
+//   var checked = document.querySelectorAll('input:checked');
+//   if (checked.length === 0) {
+//     errorMessage = "You must select at least one character type";
+//    console.log('no checkboxes checked');
+//    return false;
+//   } else {
+//     errorMessage = "";
+//   console.log(checked.length + 'checkboxes checked');
+//    return true;
+//   }
+// }
+
+
+
 
 
 
@@ -158,15 +182,16 @@ const getPasswordCritera = () => {
 // specialCheckbox.addEventListener("click", getPasswordCritera);
  
 
-const uppercase = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
-const lowercase = ['abcdefghijklmnopqrstuvwxyz']
-const numbers = ['0123456789']
-const special = [" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
+
 
 
 const createRandomPassword = () => {
 
- 
+ // Declarion of arrays containing charactersets
+ const uppercaseArray = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+ const lowercaseArray = ['abcdefghijklmnopqrstuvwxyz']
+ const numbersArray = ['0123456789']
+ const specialArray = [" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
 
   return "sadjkghasfjk"
 };

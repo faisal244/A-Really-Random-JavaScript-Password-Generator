@@ -6,55 +6,72 @@ let uppercaseCheckbox = document.querySelector("#upper");
 let lowercaseCheckbox = document.querySelector("#lower");
 let numberCheckbox = document.querySelector("#number");
 let specialCheckbox = document.querySelector("#special");
+// let passwordLength = '';
 // let passwordLength = document.getElementById("#length").value;
 
 
+// let userLength = function() {
+  // let passwordLength = prompt("Please enter your password length");
+  // console.log(passwordLength);
+  // return passwordLength;
+  
+  // let userLength = passwordLength;
+// };
+
+
+// userLength = passwordPrompt 
 
 
 // password length validation function
-const getPasswordLength = () => {
-
-// This variable takes the users input and makes it available within this function
-let passwordLength = document.getElementById("length").value;
-
-
-// If password length is larger than or equal to 8:
-if (passwordLength =>8) {
-  document.getElementById("password").innerHTML =
-  passwordLength + " is a good password length";
-
-  // If password length is larger than 128:
-} if (passwordLength > 128) {
-  document.getElementById("password").innerHTML =
-  "password is too long";
-
-  // If password length is less than 8:
-} if (passwordLength < 8) {
-  document.getElementById("password").innerHTML =
-  "password is too short";
-
-  // // If the password length field is 0 or left blank:
-} if (passwordLength == 0) {
-  document.getElementById("password").innerHTML =
-  "Password length cannot be empty - please select a length between 8-128";
-} if (passwordLength >= 8 && passwordLength <= 128){
-// logs password length to console
-console.log("true")
-return true;
-// console.log("password length: " + passwordLength)
-} else {
-  console.log("false");
-  return false;
+const getPasswordLength = (PasswordLength) => {
+  
+  // This variable takes the users input and makes it available within this function
+  // let passwordLength = document.getElementById("length").value;
+  const passwordLength = prompt("Please enter your password length");
+  console.log(passwordLength);
+  
+  // if password length is not a number:  
+  if (isNaN(passwordLength)) {
+    alert("Please enter a valid number");
+ 
+  // If password length is larger than or equal to 8:
+  } else if (passwordLength =>8) {
+    document.getElementById("password").innerHTML =
+    passwordLength + " is a good password length";
+    
+    // If password length is larger than 128:
+  } if (passwordLength > 128) {
+    document.getElementById("password").innerHTML =
+    "password is too long";
+    
+    // If password length is less than 8:
+  } if (passwordLength < 8) {
+    document.getElementById("password").innerHTML =
+    "password is too short";
+    
+    // // If the password length field is 0 or left blank:
+  } if (passwordLength == 0) {
+    document.getElementById("password").innerHTML =
+    "Password length cannot be empty - please select a length between 8-128";
+  } if (passwordLength >= 8 && passwordLength <= 128){
+    // logs password length to console
+    console.log("true")
+    return true;
+    // console.log("password length: " + passwordLength)
+  } else {
+    console.log("false");
+    return false;
+  }
+  // // Returns the password length as a number
+  // return passwordLength
+  
 }
-// // Returns the password length as a number
-// return passwordLength
-
-}
 
 
 
+document.addEventListener("click", getPasswordLength);
 
-  // let passwordLength = prompt("Please enter your password length");
+// let passwordLength = prompt("Please enter your password length");
   // if (passwordLength =>8) {
   //   document.getElementById("password").innerHTML =
   //   "good password length";
@@ -148,6 +165,8 @@ const special = [" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
 
 
 const createRandomPassword = () => {
+
+ 
 
   return "sadjkghasfjk"
 };

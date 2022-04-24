@@ -2,15 +2,96 @@
 
 // Declaration of variables
 let generateBtn = document.querySelector("#generate");
-let uppercaseCheckbox = document.querySelector("#upper");
-let lowercaseCheckbox = document.querySelector("#lower");
-let numberCheckbox = document.querySelector("#number");
-let specialCheckbox = document.querySelector("#special");
-let passwordLength = document.getElementById("length").value;
+
+// Declaring Password Data Arrays Globally
+const uppercaseArray = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+
+const lowercaseArray = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+const numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+const specialArray = [
+  "+",
+  "-",
+  "&&",
+  "||",
+  "!",
+  "(",
+  ")",
+  "{",
+  "}",
+  "[",
+  "]",
+  "^",
+  "~",
+  "*",
+  "?",
+  ":",
+];
+
+// let uppercaseCheckbox = document.querySelector("#upper");
+// let lowercaseCheckbox = document.querySelector("#lower");
+// let numberCheckbox = document.querySelector("#number");
+// let specialCheckbox = document.querySelector("#special");
+// let passwordLength = document.getElementById("length").value;
 // let passwordLength = document.getElementById("#length").value;
 
 // An Array which will store all of the users inputs for password criteria
-let attributes = []
+// let attributes = []
 
 
 // let userLength = function() {
@@ -25,11 +106,15 @@ let attributes = []
 // userLength = passwordPrompt 
 
 
+
+
+
+
+
 // password length validation function
 const getPasswordLength = (PasswordLength) => {
   
   // This variable takes the users input and makes it available within this function
-  // let passwordLength = document.getElementById("length").value;
   const passwordLength = prompt("Please enter your password length");
   // console.log(passwordLength);
   
@@ -56,6 +141,12 @@ const getPasswordLength = (PasswordLength) => {
   } if (passwordLength == 0) {
     document.getElementById("password").innerHTML =
     "Password length cannot be empty - please select a length between 8-128";
+
+    // If user clicks cancel
+  } if (!passwordLength) {
+    alert("You must enter a valid value to continue");
+
+    // if password length meets criteria:
   } if (passwordLength >= 8 && passwordLength <= 128){
     // logs password length to console
     console.log("true")
@@ -78,42 +169,117 @@ const getPasswordLength = (PasswordLength) => {
 
 
 
+// Declarion of variables that store the users ansers from prompts about which type of characters they want included in their password
+const lowerCasePrompt = confirm("Do you want your secure password to contain lowercase characters?");
+const upperCasePrompt = confirm("Do you want your secure password to contain uppercase characters?");
+const numberPrompt = confirm("Do you want your secure password to contain numbers?");
+const specialPrompt = confirm("Do you want your secure password to contain special characters?");
 
-  const getPasswordCritera = () => {
 
-  // Declarion of variables that store the users ansers from prompts about which type of characters they want included in their password
-  const lowerCasePrompt = confirm("Do you want your secure password to contain lowercase characters?");
-  const upperCasePrompt = confirm("Do you want your secure password to contain uppercase characters?");
-  const numberPrompt = confirm("Do you want your secure password to contain numbers?");
-  const specialPrompt = confirm("Do you want your secure password to contain special characters?");
+
+
+
+  const attributes = {
+    // passwordLength: passwordLength, - not sure if i even need to include this here, might be better to call it seperately
+    lowercase: lowerCasePrompt,
+    uppercase: upperCasePrompt,
+    numChar: numberPrompt,
+    specialChar: specialPrompt,
+  };
+  console.log(attributes)
+  // return attributes;
   
+
+  // const getPasswordCritera = () => {
+
+    
+    
+  // }
+
+
+
+
+
+
   
 
+// // Write password to the #password input
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
+
+//   passwordText.value = password;
+
+// }
 
 
-    const attributes = {
-      // passwordLength: passwordLength, - not sure if i even need to include this here, might be better to call it seperately
-      lowercase: lowerCasePrompt,
-      uppercase: upperCasePrompt,
-      numChar: numberPrompt,
-      specialChar: specialPrompt,
-    };
-    console.log(attributes)
-    return attributes;
-    
-    
-    
+
+
+
+
+
+
+  var possibleCharacters
+  // if (attributes = true) {
+  if (lowercase) {
+   possibleCharacters += lowercaseArray; 
+} if (upperercase) {
+  possibleCharacters += uppercaseArray; 
+} if (numChar) {
+  possibleCharacters += numbersArray;
+} if (specialChar) {
+  possibleCharacters += specialArray;
+} 
+
+// const createRandomPassword = () => {
+//   // var chosenCharacters = "";
+
+var randomSelection = "";
+    for (var i = 0; i < length; i++) {
+      randomSelection += attributes.charAt(Math.floor(Math.random() * possibleCharacters.length));
+      //console.log(randomSelection);
+      }
+      console.log(randomSelection)
+    return randomSelection;
   }
-
+  
 
   document.addEventListener("click", getPasswordLength);
   document.addEventListener("click", getPasswordCritera);
 
 
 
+ 
 
 
-//   // below is the logic for using checkboxes - i've abandoned this because the homework brief specially asked from prompts - may reinstate this in future 
+  // const generatePassword = () => {
+
+
+  //   const passwordLengh = getPasswordLength();
+
+  //   const passwordCriteria = getPasswordCriteria();
+
+  //   const password = createRandomPassword(passwordlength, passwordcriteria);
+  //     return password;
+
+
+  // };
+
+  // Add event listener to generate button
+  generateBtn.addEventListener("click", getPasswordLength);
+generateBtn.addEventListener("click", writePassword);
+
+
+// *****************************************************
+
+
+// <!-- nice way of doing inline JS instead of using listeners -->
+  // <button onclick="changeColor()">CLICK ME </button>
+
+
+
+
+  //   // below is the logic for using checkboxes - i've abandoned this because the homework brief specially asked from prompts - may reinstate this in future 
 // // may need to create a new field on the front end for error messages, doesn't seem to work if more than 1 function is targetting the same html field
 //   var errorMessage = document.getElementById("password").innerHTML;
 //   var checked = document.querySelectorAll('input:checked');
@@ -182,49 +348,3 @@ const getPasswordLength = (PasswordLength) => {
 // specialCheckbox.addEventListener("click", getPasswordCritera);
  
 
-
-
-
-const createRandomPassword = () => {
-
- // Declarion of arrays containing charactersets
- const uppercaseArray = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
- const lowercaseArray = ['abcdefghijklmnopqrstuvwxyz']
- const numbersArray = ['0123456789']
- const specialArray = [" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]
-
-  return "sadjkghasfjk"
-};
-
-
-  // const generatePassword = () => {
-
-
-  //   const passwordLengh = getPasswordLength();
-
-  //   const passwordCriteria = getPasswordCriteria();
-
-  //   const password = createRandomPassword(passwordlength, passwordcriteria);
-  //     return password;
-
-
-  // };
-  
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-generateBtn.addEventListener("click", getPasswordLength);
-
-
-
-// <!-- nice way of doing inline JS instead of using listeners -->
-  // <button onclick="changeColor()">CLICK ME </button>

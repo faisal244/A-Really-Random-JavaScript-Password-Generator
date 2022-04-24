@@ -107,16 +107,68 @@ const specialArray = [
 
 
 
+// Functions that store the users answers from prompts about password length and which type of characters they want included in their password
 
 
+// Get User Inputs from prompts - Password Length
+const getPasswordLength = function () {
+  const userLengthInput = prompt("Please enter your password length");
+  const passwordLength = parseInt(userLengthInput, 10);
+  console.log(passwordLength);
+  return passwordLength;
+};
 
 
-// password length validation function
-const getPasswordLength = (PasswordLength) => {
+// Get User Inputs from prompts - Uppercase
+const upperCasePrompt = () => {
+const userUpperChoice = prompt("Do you want your secure password to contain uppercase characters?");
+console.log(userUpperChoice);
+return userUpperChoice;
+}
+
+// Get User Inputs from prompts - Lowercase
+const lowerCasePrompt = () => {
+  const userLowerChoice = prompt("Do you want your secure password to contain lowercase characters?");
+  console.log(userLowerChoice);
+  return userLowerChoice;
+  }
+
+// Get User Inputs from prompts - Numbers
+const numberPrompt = () => {
+  const userNumberChoice = prompt("Do you want your secure password to contain numbers?");
+  console.log(userNumberChoice);
+  return userNumberChoice;
+  }
   
-  // This variable takes the users input and makes it available within this function
-  const passwordLength = prompt("Please enter your password length");
-  // console.log(passwordLength);
+// Get User Inputs from prompts - Special Characters
+const specialPrompt = () => {
+  const userSpecialChoice = prompt("Do you want your secure password to contain special characters?");
+  console.log(userSpecialChoice);
+  return userSpecialChoice;
+  }
+  
+
+
+  const getPasswordCritera = () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // password length validation function
+// const getPasswordLength = (PasswordLength) => {
+  
+//   // This variable takes the users input and makes it available within this function
+//   const passwordLength = prompt("Please enter your password length");
+//   // console.log(passwordLength);
   
   // if password length is not a number:  
   if (isNaN(passwordLength)) {
@@ -150,7 +202,10 @@ const getPasswordLength = (PasswordLength) => {
   } if (passwordLength >= 8 && passwordLength <= 128){
     // logs password length to console
     console.log("true")
-    document.getElementById("length").value = passwordLength;
+    // document.getElementById("length").value = passwordLength;
+
+
+    
     return true;
     // console.log("password length: " + passwordLength)
   } else {
@@ -169,14 +224,6 @@ const getPasswordLength = (PasswordLength) => {
 
 
 
-// Declarion of variables that store the users ansers from prompts about which type of characters they want included in their password
-const lowerCasePrompt = confirm("Do you want your secure password to contain lowercase characters?");
-const upperCasePrompt = confirm("Do you want your secure password to contain uppercase characters?");
-const numberPrompt = confirm("Do you want your secure password to contain numbers?");
-const specialPrompt = confirm("Do you want your secure password to contain special characters?");
-
-
-
 
 
   const attributes = {
@@ -190,11 +237,11 @@ const specialPrompt = confirm("Do you want your secure password to contain speci
   // return attributes;
   
 
-  // const getPasswordCritera = () => {
+
 
     
     
-  // }
+
 
 
 

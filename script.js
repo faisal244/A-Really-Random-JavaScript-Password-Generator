@@ -120,46 +120,41 @@ const getPasswordLength = function () {
 
 
 // Get User Inputs from prompts - Uppercase
-const upperCasePrompt = () => {
-const userUpperChoice = prompt("Do you want your secure password to contain uppercase characters?");
+const upperCasePrompt = function () {
+const userUpperChoice = confirm("Do you want your secure password to contain uppercase characters?");
 console.log(userUpperChoice);
 return userUpperChoice;
 }
 
 // Get User Inputs from prompts - Lowercase
-const lowerCasePrompt = () => {
-  const userLowerChoice = prompt("Do you want your secure password to contain lowercase characters?");
+const lowerCasePrompt = function () {
+  const userLowerChoice = confirm("Do you want your secure password to contain lowercase characters?");
   console.log(userLowerChoice);
   return userLowerChoice;
   }
 
 // Get User Inputs from prompts - Numbers
-const numberPrompt = () => {
-  const userNumberChoice = prompt("Do you want your secure password to contain numbers?");
+const numberPrompt = function () {
+  const userNumberChoice = confirm("Do you want your secure password to contain numbers?");
   console.log(userNumberChoice);
   return userNumberChoice;
   }
   
 // Get User Inputs from prompts - Special Characters
-const specialPrompt = () => {
-  const userSpecialChoice = prompt("Do you want your secure password to contain special characters?");
+const specialPrompt = function () {
+  const userSpecialChoice = confirm("Do you want your secure password to contain special characters?");
   console.log(userSpecialChoice);
   return userSpecialChoice;
   }
   
 
 
-  const getPasswordCritera = () => {
 
 
+const getPasswordCritera = function () {
 
 
-
-
-
-
-
-
+const passwordLength = getPasswordLength();
 
 
 
@@ -201,17 +196,51 @@ const specialPrompt = () => {
     // if password length meets criteria:
   } if (passwordLength >= 8 && passwordLength <= 128){
     // logs password length to console
-    console.log("true")
+    console.log("true");
     // document.getElementById("length").value = passwordLength;
-
-
     
-    return true;
-    // console.log("password length: " + passwordLength)
-  } else {
-    console.log("false");
-    return false;
+      // passwordLength: passwordLength, - not sure if i even need to include this here, might be better to call it seperately
+      const lowercase = lowerCasePrompt ();
+      const uppercase = upperCasePrompt ();
+      const numChar = numberPrompt ();
+      const specialChar = specialPrompt ();
+
+      // return user choices to console log:;
+      console.log(lowercase)
+      console.log(uppercase)
+      console.log(numChar)
+      console.log(specialChar)
+    
+      // object that stores all of the users choices 
+    const passwordCriteria = {
+      passwordLength: passwordLength,
+      lowercase: lowercase,
+      uppercase: uppercase,
+      numbers: numChar,
+      specials: specialChar,
+    }; 
+    
+    
+    if (
+      !passwordCriteria.numbers &&
+      !passwordCriteria.lowercase &&
+      !passwordCriteria.uppercase &&
+      !passwordCriteria.specials
+    ) {
+      alert("You have not selected a valid password criteria.");
+    } else {
+      console.log("It all works!");
+      return passwordCriteria;
+    }
   }
+    // return passwordCriteria;
+
+    // return true;
+    // console.log("password length: " + passwordLength)
+  // } else {
+  //   console.log("false");
+  //   return false;
+  // }
   // // Returns the password length as a number
   // return passwordLength
   
@@ -226,15 +255,7 @@ const specialPrompt = () => {
 
 
 
-  const attributes = {
-    // passwordLength: passwordLength, - not sure if i even need to include this here, might be better to call it seperately
-    lowercase: lowerCasePrompt,
-    uppercase: upperCasePrompt,
-    numChar: numberPrompt,
-    specialChar: specialPrompt,
-  };
-  console.log(attributes)
-  // return attributes;
+
   
 
 
@@ -266,132 +287,132 @@ const specialPrompt = () => {
 
 
 
-  var possibleCharacters
-  // if (attributes = true) {
-  if (lowercase) {
-   possibleCharacters += lowercaseArray; 
-} if (upperercase) {
-  possibleCharacters += uppercaseArray; 
-} if (numChar) {
-  possibleCharacters += numbersArray;
-} if (specialChar) {
-  possibleCharacters += specialArray;
-} 
+//   var possibleCharacters
+//   // if (attributes = true) {
+//   if (lowercase) {
+//    possibleCharacters += lowercaseArray; 
+// } if (upperercase) {
+//   possibleCharacters += uppercaseArray; 
+// } if (numChar) {
+//   possibleCharacters += numbersArray;
+// } if (specialChar) {
+//   possibleCharacters += specialArray;
+// } 
 
-// const createRandomPassword = () => {
-//   // var chosenCharacters = "";
+// // const createRandomPassword = () => {
+// //   // var chosenCharacters = "";
 
-var randomSelection = "";
-    for (var i = 0; i < length; i++) {
-      randomSelection += attributes.charAt(Math.floor(Math.random() * possibleCharacters.length));
-      //console.log(randomSelection);
-      }
-      console.log(randomSelection)
-    return randomSelection;
-  }
+// var randomSelection = "";
+//     for (var i = 0; i < length; i++) {
+//       randomSelection += attributes.charAt(Math.floor(Math.random() * possibleCharacters.length));
+//       //console.log(randomSelection);
+//       }
+//       console.log(randomSelection)
+//     return randomSelection;
+//   }
   
 
-  document.addEventListener("click", getPasswordLength);
-  document.addEventListener("click", getPasswordCritera);
+//   document.addEventListener("click", getPasswordLength);
+//   document.addEventListener("click", getPasswordCritera);
 
 
 
  
 
 
-  // const generatePassword = () => {
+//   // const generatePassword = () => {
 
 
-  //   const passwordLengh = getPasswordLength();
+//   //   const passwordLengh = getPasswordLength();
 
-  //   const passwordCriteria = getPasswordCriteria();
+//   //   const passwordCriteria = getPasswordCriteria();
 
-  //   const password = createRandomPassword(passwordlength, passwordcriteria);
-  //     return password;
-
-
-  // };
-
-  // Add event listener to generate button
-  generateBtn.addEventListener("click", getPasswordLength);
-generateBtn.addEventListener("click", writePassword);
+//   //   const password = createRandomPassword(passwordlength, passwordcriteria);
+//   //     return password;
 
 
-// *****************************************************
+//   // };
+
+//   // Add event listener to generate button
+//   generateBtn.addEventListener("click", getPasswordLength);
+// generateBtn.addEventListener("click", writePassword);
 
 
-// <!-- nice way of doing inline JS instead of using listeners -->
-  // <button onclick="changeColor()">CLICK ME </button>
+// // *****************************************************
 
 
-
-
-  //   // below is the logic for using checkboxes - i've abandoned this because the homework brief specially asked from prompts - may reinstate this in future 
-// // may need to create a new field on the front end for error messages, doesn't seem to work if more than 1 function is targetting the same html field
-//   var errorMessage = document.getElementById("password").innerHTML;
-//   var checked = document.querySelectorAll('input:checked');
-//   if (checked.length === 0) {
-//     errorMessage = "You must select at least one character type";
-//    console.log('no checkboxes checked');
-//    return false;
-//   } else {
-//     errorMessage = "";
-//   console.log(checked.length + 'checkboxes checked');
-//    return true;
-//   }
-// }
+// // <!-- nice way of doing inline JS instead of using listeners -->
+//   // <button onclick="changeColor()">CLICK ME </button>
 
 
 
 
+//   //   // below is the logic for using checkboxes - i've abandoned this because the homework brief specially asked from prompts - may reinstate this in future 
+// // // may need to create a new field on the front end for error messages, doesn't seem to work if more than 1 function is targetting the same html field
+// //   var errorMessage = document.getElementById("password").innerHTML;
+// //   var checked = document.querySelectorAll('input:checked');
+// //   if (checked.length === 0) {
+// //     errorMessage = "You must select at least one character type";
+// //    console.log('no checkboxes checked');
+// //    return false;
+// //   } else {
+// //     errorMessage = "";
+// //   console.log(checked.length + 'checkboxes checked');
+// //    return true;
+// //   }
+// // }
 
 
-//   let uppercaseCheckbox = document.querySelector("#upper");
-//   let lowercaseCheckbox = document.querySelector("#lower");
-//   let numberCheckbox = document.querySelector("#number");
-//   let specialCheckbox = document.querySelector("#special");
-//   // maybe a variable with 3 functions nested inside of it here 
-// // might need to turn each of the below into its own function - they currently fire all at once
+
+
+
+
+// //   let uppercaseCheckbox = document.querySelector("#upper");
+// //   let lowercaseCheckbox = document.querySelector("#lower");
+// //   let numberCheckbox = document.querySelector("#number");
+// //   let specialCheckbox = document.querySelector("#special");
+// //   // maybe a variable with 3 functions nested inside of it here 
+// // // might need to turn each of the below into its own function - they currently fire all at once
   
-// function upperCase() {
-//     // if (uppercaseCheckbox !== null) {
-//       let uppercaseCheckbox = document.querySelector("#upper");
-//       let lowercaseCheckbox = document.querySelector("#lower");
-//       if (uppercaseCheckbox = document.querySelector('#upper input:checked'))
-//       console.log ("uppercase!!!!")
-//     } if (lowercaseCheckbox = document.querySelector('#lower input:checked'))
+// // function upperCase() {
+// //     // if (uppercaseCheckbox !== null) {
+// //       let uppercaseCheckbox = document.querySelector("#upper");
+// //       let lowercaseCheckbox = document.querySelector("#lower");
+// //       if (uppercaseCheckbox = document.querySelector('#upper input:checked'))
+// //       console.log ("uppercase!!!!")
+// //     } if (lowercaseCheckbox = document.querySelector('#lower input:checked'))
     
     
-//     // else if (lowercaseCheckbox !== null) {
-//       console.log('lowercase!!!!');
-//   }
-//     // } else if (numberCheckbox !== null) {
-//     //   console.log('Numbers !!!!')
+// //     // else if (lowercaseCheckbox !== null) {
+// //       console.log('lowercase!!!!');
+// //   }
+// //     // } else if (numberCheckbox !== null) {
+// //     //   console.log('Numbers !!!!')
 
-//     // } else if (specialCheckbox !== null) {
-//     //   console.log('Special characters!!!!')
+// //     // } else if (specialCheckbox !== null) {
+// //     //   console.log('Special characters!!!!')
 
-//     // } else {
-//     //   console.log('Please select at least one option')
-//     // }
+// //     // } else {
+// //     //   console.log('Please select at least one option')
+// //     // }
   
 
-//   // whack in the alphabet and number arrays in here 
+// //   // whack in the alphabet and number arrays in here 
 
 
  
 
-  // if (uppercaseCheckbox === true) {
-    // console.log('uppercase selected and working')
+//   // if (uppercaseCheckbox === true) {
+//     // console.log('uppercase selected and working')
 
 
 
-// };
+// // };
 
-// // Add event listeners for the checkboxes
-// uppercaseCheckbox.addEventListener("click", getPasswordCritera);
-// lowercaseCheckbox.addEventListener("click", getPasswordCritera);
-// numberCheckbox.addEventListener("click", getPasswordCritera);
-// specialCheckbox.addEventListener("click", getPasswordCritera);
+// // // Add event listeners for the checkboxes
+// // uppercaseCheckbox.addEventListener("click", getPasswordCritera);
+// // lowercaseCheckbox.addEventListener("click", getPasswordCritera);
+// // numberCheckbox.addEventListener("click", getPasswordCritera);
+// // specialCheckbox.addEventListener("click", getPasswordCritera);
  
 

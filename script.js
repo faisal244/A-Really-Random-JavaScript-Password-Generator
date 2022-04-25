@@ -3,7 +3,7 @@
 // Declaration of variables
 let generateBtn = document.querySelector("#generate");
 
-// Declaring Password Data Arrays Globally
+// Declaring Password character Arrays Globally
 const uppercaseArray = [
   "A",
   "B",
@@ -111,7 +111,7 @@ const specialArray = [
 
 
 // Get User Inputs from prompts - Password Length
-const getPasswordLength = function () {
+const getPasswordLength = () =>  {
   const userLengthInput = prompt("Please enter your password length");
   const passwordLength = parseInt(userLengthInput, 10);
   console.log(passwordLength);
@@ -120,28 +120,28 @@ const getPasswordLength = function () {
 
 
 // Get User Inputs from prompts - Uppercase
-const upperCasePrompt = function () {
+const upperCasePrompt = () =>  {
 const userUpperChoice = confirm("Do you want your secure password to contain uppercase characters?");
 console.log(userUpperChoice);
 return userUpperChoice;
 }
 
 // Get User Inputs from prompts - Lowercase
-const lowerCasePrompt = function () {
+const lowerCasePrompt = () =>  {
   const userLowerChoice = confirm("Do you want your secure password to contain lowercase characters?");
   console.log(userLowerChoice);
   return userLowerChoice;
   }
 
 // Get User Inputs from prompts - Numbers
-const numberPrompt = function () {
+const numberPrompt = () =>  {
   const userNumberChoice = confirm("Do you want your secure password to contain numbers?");
   console.log(userNumberChoice);
   return userNumberChoice;
   }
   
 // Get User Inputs from prompts - Special Characters
-const specialPrompt = function () {
+const specialPrompt = () =>  {
   const userSpecialChoice = confirm("Do you want your secure password to contain special characters?");
   console.log(userSpecialChoice);
   return userSpecialChoice;
@@ -151,19 +151,10 @@ const specialPrompt = function () {
 
 
 
-const getPasswordCritera = function () {
+const getPasswordCriteria = () =>  {
 
-
-const passwordLength = getPasswordLength();
-
-
-
-// // password length validation function
-// const getPasswordLength = (PasswordLength) => {
-  
-//   // This variable takes the users input and makes it available within this function
-//   const passwordLength = prompt("Please enter your password length");
-//   // console.log(passwordLength);
+  // This variable takes the users password length input and makes it available within this function to be validated
+  const passwordLength = getPasswordLength();
   
   // if password length is not a number:  
   if (isNaN(passwordLength)) {
@@ -195,11 +186,7 @@ const passwordLength = getPasswordLength();
 
     // if password length meets criteria:
   } if (passwordLength >= 8 && passwordLength <= 128){
-    // logs password length to console
-    console.log("true");
-    // document.getElementById("length").value = passwordLength;
     
-      // passwordLength: passwordLength, - not sure if i even need to include this here, might be better to call it seperately
       const lowercase = lowerCasePrompt ();
       const uppercase = upperCasePrompt ();
       const numChar = numberPrompt ();
@@ -220,7 +207,7 @@ const passwordLength = getPasswordLength();
       specials: specialChar,
     }; 
     
-    
+    // Validation that user has selected at least one option, returning an error message if minimum criteria has not been met 
     if (
       !passwordCriteria.numbers &&
       !passwordCriteria.lowercase &&
@@ -233,35 +220,89 @@ const passwordLength = getPasswordLength();
       return passwordCriteria;
     }
   }
-    // return passwordCriteria;
-
-    // return true;
-    // console.log("password length: " + passwordLength)
-  // } else {
-  //   console.log("false");
-  //   return false;
-  // }
-  // // Returns the password length as a number
-  // return passwordLength
-  
 }
 
+// Array Function to randomly generate a password from the password Criteria object 
+const createRandomPassword = (arr) => {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  const elemValue = arr[randomIndex];
+  return elemValue;
+};
 
-
-
-
-
-
-
-
-
-
+// var randomSelection = "";
+//     for (var i = 0; i < length; i++) {
+//       randomSelection += attributes.charAt(Math.floor(Math.random() * possibleCharacters.length));
+//       //console.log(randomSelection);
+//       }
+//       console.log(randomSelection)
+//     return randomSelection;
+//   }
   
 
+  // Function that will check  the users selected password criteria and generate a randomised password based on their selections 
+  const generatePassword = () => {
+    
+    // declaration of variables needed for this function
+    const criteria = getPasswordCriteria();
+    const userPasswordChoices = [];
+    const randomValues = [];
 
+    // IF statement that will populate the 2 empty arrays above 
+    if (criteria.uppercase) {
+      userPasswordChoices.push(...uppercaseArray);
+      randomValues.push(createRandomPassword(uppercaseArray));
+
+    }   if (criteria.lowercase) {
+      userPasswordChoices.push(...lowercaseArray);
+      randomValues.push(createRandomPassword(lowercaseArray));
+
+    } if (criteria.numbers) {
+      userPasswordChoices.push(...numbersArray);
+      randomValues.push(createRandomPassword(numbersArray));
+    
+    } if (criteria.specials) {
+      userPasswordChoices.push(...specialArray);
+      randomValues.push(createRandomPassword(specialArray));
+    }
+
+    // Each randomly selected character of the password gets stored in this empty array
+    const userPassword = [];
+
+    // This for loop will match the password length the user has selected and run until it the random password is the same length 
+    for (let i = 0; i < criteria.passwordLength; i++) {
+      let password = createRandomPassword(userPasswordChoices);
+      userPassword.push(password);
+    }
+  
+    // This for loop uses the randomValues array to randomise the generate password even further 
+    for (let i = 0; i < randomValues.length; i++) {
+      userPassword[i] = randomValues[i];
+    }
+    // Each generated character is concatenated into a single password string here 
+    return userPassword.join("");
+  }
 
     
-    
+// This function Writes the generated password to the #password box on the frontend 
+const writePassword = () =>  {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+
+// Event listener which listens for clicks to the generate password button
+generateBtn.addEventListener("click", writePassword);
+
+  //   // const password = createRandomPassword(passwordlength, passwordcriteria);
+  //   const password = generatePassword();
+  //     return password;
+
+
+  // };
+
+
+
 
 
 
@@ -299,39 +340,11 @@ const passwordLength = getPasswordLength();
 //   possibleCharacters += specialArray;
 // } 
 
-// // const createRandomPassword = () => {
-// //   // var chosenCharacters = "";
-
-// var randomSelection = "";
-//     for (var i = 0; i < length; i++) {
-//       randomSelection += attributes.charAt(Math.floor(Math.random() * possibleCharacters.length));
-//       //console.log(randomSelection);
-//       }
-//       console.log(randomSelection)
-//     return randomSelection;
-//   }
-  
 
 //   document.addEventListener("click", getPasswordLength);
 //   document.addEventListener("click", getPasswordCritera);
 
 
-
- 
-
-
-//   // const generatePassword = () => {
-
-
-//   //   const passwordLengh = getPasswordLength();
-
-//   //   const passwordCriteria = getPasswordCriteria();
-
-//   //   const password = createRandomPassword(passwordlength, passwordcriteria);
-//   //     return password;
-
-
-//   // };
 
 //   // Add event listener to generate button
 //   generateBtn.addEventListener("click", getPasswordLength);

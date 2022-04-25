@@ -40,7 +40,7 @@ The following image shows the web application's appearance and functionality:
 
 ## Link to deployed application
 
-* 
+* https://faisal244.github.io/A-Really-Random-JavaScript-Password-Generator/
 
 
 Below is an overview of the approach i took when working on the JavaScript logic for this project in order to meet the University of Birmingham acceptance criteria:

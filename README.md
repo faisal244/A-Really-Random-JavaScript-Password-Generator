@@ -1,13 +1,8 @@
-# JavaScript-Password-Generator
-A Password Generator built in Javascript - My first real JavaScript project 
+#  A Really Random JavaScript Password Generator
+A Password Generator built in Javascript - My first real JavaScript project, and a chance to apply everything i have learnt so far.
 
-# 03 JavaScript: Password Generator
+I was tasked with creating an application that enables employees to generate random passwords based on criteria that they’ve selected. This app runs in the browser and features dynamically updated HTML and CSS powered by JavaScript code. It has a clean and polished, responsive user interface that adapts to multiple screen sizes.
 
-## Your Task
-
-This week’s homework requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
-
-The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
 
 ## User Story
 
@@ -43,61 +38,55 @@ The following image shows the web application's appearance and functionality:
 
 ![The Password Generator application displays a red button to "Generate Password".](./Assets/03-javascript-homework-demo.png)
 
-## Grading Requirements
+## Link to deployed application
 
-> **Note**: If a homework assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+* 
 
-This homework is graded based on the following criteria: 
 
-### Technical Acceptance Criteria: 40%
+Below is an overview of the approach i took when working on the JavaScript logic for this project in order to meet the University of Birmingham acceptance criteria:
+## JavaScript 
 
-* Satisfies all of the preceding acceptance criteria.
+* Declared all of the possible charactersets that can be used for the password as global variables.
 
-### Deployment: 32%
+* Created 5 functions that each prompt the user for a different part of the password criteria.
 
-* Application deployed at live URL.
+* Created a getPasswordCriteria validation function to check that the users selected password length is entered and valid, coverts the user input into an integer, and displays various descriptive messages in the password box if there are any issues with validating the users input. 
 
-* Application loads with no errors.
+* If the password length meets the requirements of being more than 8 characters and less than 128, The users other inputs are pulled into the function.
 
-* Application GitHub URL submitted.
+* These are all then stored in a JavaScript object, and validated to ensure the user has selected at least one character type, and returned if all validation checks are passed.
 
-* GitHub repository that contains application code.
+* I then created a randomisation algorithm - An array function that randomly generates each character of the password based on the options selected in the password Criteria object, that can be called on in the next step.
 
-### Application Quality: 15%
+* Created a generatePassword function which pulls in the JavaScript object that was defined and validated earlier in getPasswordCriteria (), declared 2 empty arrays to store the randomly generated characters, and then used an if statement to fill each array based on the users criteria inputs.
 
-* Application user experience is intuitive and easy to navigate.
+* I then used a couple of for loops - both of which generate a random character, and keep repeating until the random string matches the length of the users password length selection. The second for loop attempts to randomise the generated password even further by using userPassword[i] = randomValues[i]; .
 
-* Application user interface style is clean and polished.
+* Once this is done, each generated character is joined together into one string. This function is triggered by an event listener when a user clicks on the genreate password button, which triggers the generatePassword function explained above. 
 
-* Application resembles the mock-up functionality provided in the homework instructions.
+* The randomly generated secure password is then presented to the user, by being written to the input of the password textbox on the front end, ready for use.
 
-### Repository Quality: 13%
+## Challenges I faced 
 
-* Repository has a unique name.
+* There were a few instances while working on this project where i realised the approach i had taken was not the best way of doing things, and was making the final solution a lot more complicated than it needed to be.
 
-* Repository follows best practices for file structure and naming conventions.
+* I initially tried to create a series of checkboxes and form fields on the front end where the user could type in their desired password length and click on checkboxes for the types of characters they wanted in the final password. Turns out this approach, while providing a good UX, would not have met the acceptance criteria/brief for this project, so i had to refine my approach.
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
+* I was initially trying to prompt the user for their criteria and then validate it all in one function, which got really convuluted and messy, causing constant errors. I solved this by splitting each prompt into its own function, then having another function to handle the validation. The password length input gets validated first, and if that passes all the criteria, only then does the function move on to the password character selections, and as long as one is selected, once all validation criteria is met, a JavaScript object is screated which i can then pull into other functions.
 
-* Repository contains multiple descriptive commit messages.
+* I also had difficulty with password generation, which i eventually discovered was due to trying to have the ransomisation function, a big if statement and a couple of for loops all in one function. I was on the right track but was trying to get my function to do it all. My eureka moment came once i split these operations out into separate functions, then everything started coming together quite quickly!
+## My Development Environment
 
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
+* MacOS Monterey 
+* VScode
+* Terminal
+* Google Chrome Developer Tools
+* Git
+* Github
 
-## Review
 
-You are required to submit the following for review:
+## Languages used
 
-* The URL of the deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
-- - -
-
+* Javascript
+* HTML
+* CSS

@@ -205,7 +205,7 @@ const getPasswordCriteria = () =>  {
 
 
 
-// Array Function to randomly generates each character of the password based on the options selected in the password Criteria object 
+// Array Function that randomly generates each character of the password based on the options selected in the password Criteria object 
 const createRandomPassword = (arr) => {
   const randomIndex = Math.floor(Math.random() * arr.length);
   const elemValue = arr[randomIndex];

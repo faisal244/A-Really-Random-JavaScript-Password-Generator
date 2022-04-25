@@ -118,10 +118,6 @@ button[disabled] {
   overflow: hidden;
 }
 
-#user-inputs input {
-  float: right;
-  width: fit-content;
-} 
 
 @media (max-width: 690px) {
   .btn {
